@@ -16,7 +16,7 @@ const CurrencyInformer = {
                 return resolve(response.body);
             });
         });
-        return response.rt;
+        return Object.entries(response.rt).map(([key, value]) => ({key,value})).sort((a,b)=> (a.key > b.key ? 1 : -1));;
     }
 }
 module.exports = CurrencyInformer;
