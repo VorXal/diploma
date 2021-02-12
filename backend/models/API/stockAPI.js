@@ -2,7 +2,7 @@ var unirest = require("unirest");
 
 const StockInformer = {
     getTickerList: function () {
-        return {
+        const tickerObj = {
             "MMM": "3M Company",
             "ABT": "Abbott Laboratories",
             "ABBV": "AbbVie Inc.",
@@ -509,15 +509,9 @@ const StockInformer = {
             "ZION": "Zions Bancorp",
             "ZTS": "Zoetis"
         }
+        return Object.entries(tickerObj).map(([key, value]) => ({key,value}));
     },
     getPriceOfStocks: async function (tickersString) {
-        // let queryString = "";
-        // let length = arguments.length > 10 ? 10: arguments.length;
-        // for(let i = 0; i < length; i++){
-        //     queryString += arguments[i]+",";
-        // }
-        // queryString = queryString.slice(0, -1);
-        // console.log(queryString);
         let response = await new Promise((resolve, reject) => {
             unirest("GET", "https://yahoo-finance-low-latency.p.rapidapi.com/v6/finance/quote")
             .query({
