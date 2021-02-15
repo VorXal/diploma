@@ -21,16 +21,16 @@ export default class Navbar extends Component {
                             <li className="nav-item">
                                 <Link to="/instruments" className="nav-link">Инструменты</Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to="/theory" className="nav-link">Теория</Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to="/currency" className="nav-link">Валюта</Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to="/quotes" className="nav-link">Акции</Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to="/crypto" className="nav-link">Криптовалюта</Link>
                             </li>
                         </ul>
