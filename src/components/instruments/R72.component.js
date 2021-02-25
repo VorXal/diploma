@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-export default class ROI extends Component {
+export default class R72 extends Component {
     constructor() {
         super();
         this.state = {
@@ -14,8 +14,7 @@ export default class ROI extends Component {
 
     async getParams() {
         return {
-            "invested": +document.getElementById("invested").value,
-            "returned": +document.getElementById("returned").value
+            "rate": +document.getElementById("rate").value
         }
     }
 
@@ -27,7 +26,7 @@ export default class ROI extends Component {
         const request = require('request')
 
         request.post(
-            'http://localhost:5000/materials/instruments/ROI',
+            'http://localhost:5000/materials/instruments/R72',
             {
                 json: this.state.queryObj
             },
@@ -47,12 +46,8 @@ export default class ROI extends Component {
             return (
                 <div className="instrument-content">
                     <div className="form-group">
-                        <label for="invested">Объем инвестиций</label>
-                        <input type="number" className="form-control" id="invested" placeholder="Введите объем инвестиций" required="required" step="0.01" />
-                    </div>
-                    <div className="form-group">
-                        <label for="inputNumOfPeriods">Чистая прибыль</label>
-                        <input type="number" className="form-control" id="returned" placeholder="Введите чистую прибыль" required="required" />
+                        <label for="rate">Процентная ставка</label>
+                        <input type="number" className="form-control" id="rate" placeholder="Введите процентную ставку" required="required" step="0.01" />
                     </div>
                     <button onClick={this.getRequest} type="submit" class="btn btn-primary">Отправить</button>
                 </div>
@@ -62,15 +57,11 @@ export default class ROI extends Component {
             return (
                 <div className="instrument-content">
                     <div className="form-group">
-                        <label for="invested">Объем инвестиций</label>
-                        <input type="number" className="form-control" id="invested" placeholder="Введите объем инвестиций" required="required" step="0.01" />
-                    </div>
-                    <div className="form-group">
-                        <label for="inputNumOfPeriods">Чистая прибыль</label>
-                        <input type="number" className="form-control" id="returned" placeholder="Введите чистую прибыль" required="required" />
+                        <label for="rate">Процентная ставка</label>
+                        <input type="number" className="form-control" id="rate" placeholder="Введите процентную ставку" required="required" step="0.01" />
                     </div>
                     <button onClick={this.getRequest} type="submit" class="btn btn-primary">Отправить</button>
-                    <p>Ваш ответ:   {this.state.answer}%</p>
+                    <p>Ваш ответ:   {this.state.answer}</p>
                 </div>
             );
         }

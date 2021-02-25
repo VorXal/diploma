@@ -42,10 +42,7 @@ router.route('/instruments/IRR').post((req, res) => {
 });
 
 router.route('/instruments/PP').post((req, res) => {
-    let numOfPeriods = req.body.numOfPeriods;
-    delete req.body.numOfPeriods
-    let cashFlows = Object.values(req.body);
-    res.json(+Calculator.getPP(numOfPeriods, ...cashFlows).toFixed(2));
+    res.json(+Calculator.getPP(Object.values(req.body)).toFixed(2));
 });
 
 router.route('/instruments/ROI').post((req, res) => {

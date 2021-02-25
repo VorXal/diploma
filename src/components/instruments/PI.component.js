@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import '../css/periods.css';
 
-export default class PP extends Component {
+export default class PI extends Component {
     constructor() {
         super();
         this.state = {
@@ -17,8 +17,13 @@ export default class PP extends Component {
     }
 
     async getParams() {
+        let initial = +document.getElementById("inputInitialInvestment").value;
+        let rate = +document.getElementById("inputRate").value;
         let cashFlows = document.getElementsByClassName("cashFlow");
-        let output = {}
+        let output = {
+            "initial": initial,
+            "rate": rate
+        }
         for(let i in cashFlows){
             output[`${i}`] = +cashFlows[i].value;
         }
@@ -33,7 +38,7 @@ export default class PP extends Component {
         const request = require('request')
 
         request.post(
-            'http://localhost:5000/materials/instruments/PP',
+            'http://localhost:5000/materials/instruments/PI',
             {
                 json: this.state.queryObj
             },
@@ -93,7 +98,14 @@ export default class PP extends Component {
         if (!this.state.answer) {
             return (
                 <div className="instrument-content">
-                    <p>Период 1 = Изначальная инвестиция</p>
+                    <div className="form-group">
+                        <label htmlFor="inputInitialInvestment">Вложенные средства</label>
+                        <input type="number" className="form-control" id="inputInitialInvestment" placeholder="Введите количесто вложенных средств" required="required" step="0.01" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="inputRate">Процентная ставка(%)</label>
+                        <input type="number" className="form-control" id="inputRate" placeholder="Введите ставку" required="required" step="0.01" />
+                    </div>
                     <div className="periods">
                         <div className="form-row">
                             <label className="col-5" htmlFor="inputPeriod1">Период 1</label>
@@ -111,7 +123,14 @@ export default class PP extends Component {
         else {
             return (
                 <div className="instrument-content">
-                    <p>Период 1 = Изначальная инвестиция</p>
+                    <div className="form-group">
+                        <label htmlFor="inputInitialInvestment">Вложенные средства</label>
+                        <input type="number" className="form-control" id="inputInitialInvestment" placeholder="Введите количесто вложенных средств" required="required" step="0.01" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="inputRate">Процентная ставка(%)</label>
+                        <input type="number" className="form-control" id="inputRate" placeholder="Введите ставку" required="required" step="0.01" />
+                    </div>
                     <div className="periods">
                         <div className="form-row">
                             <label className="col-5" htmlFor="inputPeriod1">Период 1</label>
@@ -129,5 +148,4 @@ export default class PP extends Component {
         }
     }
 }
-
 

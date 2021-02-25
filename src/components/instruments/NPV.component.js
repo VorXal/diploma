@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import '../css/periods.css';
 
 export default class NPV extends Component {
     constructor() {

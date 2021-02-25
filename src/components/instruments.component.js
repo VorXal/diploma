@@ -5,9 +5,18 @@ import { Link } from 'react-router-dom';
 import PV from './instruments/PV.component';
 import FV from './instruments/FV.component';
 import NPV from './instruments/NPV.component';
-import IRR from './instruments/IRR.component';
 import PP from './instruments/PP.component';
 import ROI from './instruments/ROI.component';
+import R72 from './instruments/R72.component';
+import AM from './instruments/AM.component';
+import PI from './instruments/PI.component';
+import DF from './instruments/DF.component';
+import CI from './instruments/CI.component';
+import CAGR from './instruments/CAGR.component';
+import LR from './instruments/LR.component';
+import WACC from './instruments/WACC.component';
+import PMT from './instruments/PMT.component';
+import IAR from './instruments/IAR.component';
 
 export default class Instruments extends Component {
 
@@ -29,11 +38,6 @@ export default class Instruments extends Component {
                         <div className="card bg-light">
                             <div className="card-body text-center">
                                 <Link to="/instruments/NPV" className="card-text">Чистая приведённая стоимость (Net Present Value)</Link>
-                            </div>
-                        </div>
-                        <div className="card bg-light">
-                            <div className="card-body text-center">
-                                <Link to="/instruments/IRR" className="card-text">Внутренняя норма доходности (Internal Rate of Return)</Link>
                             </div>
                         </div>
                         <div className="card bg-light">
@@ -101,9 +105,18 @@ export default class Instruments extends Component {
                     <Route exact path="/instruments/PV" component={PV}/>
                     <Route exact path="/instruments/FV" component={FV}/>
                     <Route exact path="/instruments/NPV" component={NPV}/>
-                    <Route exact path="/instruments/IRR" component={IRR}/>
                     <Route exact path="/instruments/PP" component={PP}/>
                     <Route exact path="/instruments/ROI" component={ROI}/>
+                    <Route exact path="/instruments/R72" component={R72}/>
+                    <Route exact path="/instruments/AM" component={AM}/>
+                    <Route exact path="/instruments/PI" component={PI}/>
+                    <Route exact path="/instruments/DF" component={DF}/>
+                    <Route exact path="/instruments/CI" component={CI}/>
+                    <Route exact path="/instruments/CAGR" component={CAGR}/>
+                    <Route exact path="/instruments/LR" component={LR}/>
+                    <Route exact path="/instruments/WACC" component={WACC}/>
+                    <Route exact path="/instruments/PMT" component={PMT}/>
+                    <Route exact path="/instruments/IAR" component={IAR}/>
                 </Router>
             </div>
         );

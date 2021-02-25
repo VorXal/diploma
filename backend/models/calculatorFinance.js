@@ -123,23 +123,15 @@ const Finance = {
     }
     return tempTotal;
   },
-  getPP: function (numOfPeriods, cfs) {
-    // for even cash flows
-    if (numOfPeriods === 0) {
-      return Math.abs(arguments[1]) / arguments[2];
+  getPP: function (cfs) {
+    let output = 0;
+    let i = 1;
+    while(cfs[0] > 0 && i < cfs.length - 1){
+      cfs[0] -= cfs[i];
+      i++;
+      output++;
     }
-    // for uneven cash flows
-    var cumulativeCashFlow = arguments[1];
-    var yearsCounter = 1;
-    for (let i = 2; i < arguments.length; i++) {
-      cumulativeCashFlow += arguments[i];
-      if (cumulativeCashFlow > 0) {
-        yearsCounter += (cumulativeCashFlow - arguments[i]) / arguments[i];
-        return yearsCounter;
-      } else {
-        yearsCounter++;
-      }
-    }
+    return output;
   },
   getROI: function (cf0, earnings) {
     var roi = (earnings - Math.abs(cf0)) / Math.abs(cf0) * 100;
@@ -213,12 +205,12 @@ const Finance = {
     return Math.round(WACC * 1000) / 10;
   },
   getPMT: function (rate, numOfPayments, principal) {
-    var rate = rate / 100, pmt;
-    pmt = -(principal * rate) / (1 - Math.pow(1 + rate, -numOfPayments))
+    var rate = rate / 1200, pmt;
+    pmt = principal * rate / (1 - Math.pow(1 + rate, -numOfPayments))
     return Math.round(pmt * 100) / 100;
   },
   getIAR: function (investmentReturn, inflationRate) {
-    return +(100 * (((1 + investmentReturn) / (1 + inflationRate)) - 1)).toFixed(2);
+    return +(100 * (((1 + investmentReturn/100) / (1 + inflationRate/100)) - 1)).toFixed(2);
   }
 }
 module.exports = Finance;
